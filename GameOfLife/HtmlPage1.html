@@ -2,76 +2,34 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Game of Life</title>
+    <title>Game Of Life - AngularJS</title>
+    <link rel="stylesheet" href="style.css">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    <style>
-        body{background:lightgray}
-
-        table, th, td{
-            border: 1px solid black;
-            border-collapse:collapse;
-        }
-
-        table{
-            margin : auto;
-            background-color: whitesmoke;
-        }
-
-        td{
-            width: 15px;
-            height: 15px;
-        }
-
-        .new{
-            background-color:orange
-        }
-        .old{
-           background-color:orangered;
-        }
-
-        .components{
-            display:block;
-            margin: 20px auto 20px 30%;
-        }
-       
-
-    </style>
 </head>
+
 <body>
 
     <div ng-app="gameOfLifeApp" ng-controller="gameOfLifeCtrl">
+
+        <h3 style="text-align: center">Game Of Life</h3>
+
         <table>
-            <tr ng-repeat="row in rows">
-                <td ng-click="activate(rows.indexOf(row), $index)
-                    ng-repeat=col in row.cols"
-                    ng-class="{'born':col.active==1, 'old':col.active > 1}">
-                </td>
+            <tr ng-repeat='row in rows'>
+                <td ng-click=activate(rows.indexOf(row),$index)
+                    ng-repeat='col in row.cols'
+                    ng-class="{'new':col.active == 1, 'old':col.active >1 }">
             </tr>
         </table>
 
         <div class="components">
-            <button ng-click="stop()">Stop </button>
-            <button ng-click="start()">Start </button>
-            <button ng-click="clear()">Clear </button>
+            <button ng-click="stopGame();">stop</button>
+            <button ng-click="startGame(false);">start</button>
+            <button ng-click="clear();">clear</button>
             Generation: {{generation}}
         </div>
-        
-    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script>
-        var app = angular.module('gameOfLifeApp'), []);
-
-    </script>
+        <script src="https://code.angularjs.org/1.6.9/angular.js"></script>
+         <script src="script.js"></script>
 
 </body>
 </html>
